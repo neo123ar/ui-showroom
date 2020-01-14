@@ -1,6 +1,5 @@
 import React from 'react';
-import Navigator from "../components/Navigator";
-import {RouteComponentProps, Router} from "@reach/router";
+import {RouteComponentProps} from "@reach/router";
 import Paperbase from "../components/Paperbase";
 import {componenetReducer, initialStateComponent} from "../reducers/authReducer";
 import {Provider} from "../state/component.context";

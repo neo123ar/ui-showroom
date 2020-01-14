@@ -1,33 +1,15 @@
-import React, {Context, Dispatch} from 'react';
-import {
-  createMuiTheme,
-  createStyles,
-  ThemeProvider,
-  withStyles,
-  WithStyles,
-} from '@material-ui/core/styles';
+import React, {Dispatch} from 'react';
+import {createMuiTheme, createStyles, ThemeProvider, withStyles, WithStyles,} from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Hidden from '@material-ui/core/Hidden';
-import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
 import Navigator from './Navigator';
-import Content from './Content';
 import Header from './Header';
 import {RouteComponentProps} from "@reach/router";
-import {
-  authReducer,
-  componenetReducer,
-  ComponentActionType,
-  initialAuthState,
-  initialStateComponent
-} from "../reducers/authReducer";
-import componentContext, {Provider, StateComponentType} from "../state/component.context";
+import {ComponentActionType} from "../reducers/authReducer";
+import componentContext, {StateComponentType} from "../state/component.context";
 import Calendar from "./Calendar";
 import {AppointmentModel} from "@devexpress/dx-react-scheduler";
 import TableauContainer from "../containers/TableauContainer";
 import Factory from '../factories/componentFactory'
-import Notifier from './Notifier'
-
 
 
 let theme = createMuiTheme({

@@ -1,5 +1,5 @@
 import React from 'react';
-import {OptionsObject, SnackbarProvider, useSnackbar} from "notistack";
+import {SnackbarProvider, useSnackbar} from "notistack";
 import Button from '@material-ui/core/Button';
 
 interface propsType {

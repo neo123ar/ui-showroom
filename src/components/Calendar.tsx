@@ -1,10 +1,8 @@
 import React from 'react';
 import Paper from '@material-ui/core/Paper';
-import { AppointmentModel, ViewState, SchedulerDateTime } from '@devexpress/dx-react-scheduler';
-import { Scheduler, WeekView, Appointments } from '@devexpress/dx-react-scheduler-material-ui';
+import {AppointmentModel, SchedulerDateTime, ViewState} from '@devexpress/dx-react-scheduler';
+import {Appointments, Scheduler, WeekView} from '@devexpress/dx-react-scheduler-material-ui';
 import {RouteComponentProps} from "@reach/router";
-
-
 
 
 const Appointment: React.ComponentType<Appointments.AppointmentProps> = (props) => {

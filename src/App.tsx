@@ -1,14 +1,10 @@
 import React from 'react';
 import './App.css';
-import Header from "./components/Header";
 import {Router} from '@reach/router';
 import Calendar from "./components/Calendar";
 import {AppointmentModel} from "@devexpress/dx-react-scheduler";
-import Tableau from "./components/Tableau";
 import TableauContainer from "./containers/TableauContainer";
 import ShowCase from "./pages/showcase";
-import Content from "./components/Content";
-import Paperbase from "./components/Paperbase";
 import Authentification from "./containers/authentification";
 
 

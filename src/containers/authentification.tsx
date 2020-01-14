@@ -1,11 +1,7 @@
 import React from 'react';
 import authContext, {Provider} from "../state/store";
 import {authReducer, initialAuthState} from "../reducers/authReducer";
-import {RouteComponentProps, Router} from "@reach/router";
-import Calendar from "../components/Calendar";
-import TableauContainer from "./TableauContainer";
-import Paperbase from "../components/Paperbase";
-import Header from "../components/MyHeader";
+import {RouteComponentProps} from "@reach/router";
 import LoginForm from "../components/LoginForm";
 
 

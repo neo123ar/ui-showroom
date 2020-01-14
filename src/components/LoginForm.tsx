@@ -1,6 +1,6 @@
 import React, {FormEvent, useContext} from 'react';
 import authContext from "../state/store";
-import {Redirect, RouteComponentProps} from "@reach/router";
+import {RouteComponentProps} from "@reach/router";
 import attemptLogin, {UserData} from '../auth/fakeAuth';
 
 const LoginForm = (props: RouteComponentProps): JSX.Element => {
