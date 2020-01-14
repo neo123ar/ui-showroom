@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Context, Dispatch} from 'react';
 import {
   createMuiTheme,
   createStyles,
@@ -13,19 +13,22 @@ import Link from '@material-ui/core/Link';
 import Navigator from './Navigator';
 import Content from './Content';
 import Header from './Header';
+import {RouteComponentProps} from "@reach/router";
+import {
+  authReducer,
+  componenetReducer,
+  ComponentActionType,
+  initialAuthState,
+  initialStateComponent
+} from "../reducers/authReducer";
+import componentContext, {Provider, StateComponentType} from "../state/component.context";
+import Calendar from "./Calendar";
+import {AppointmentModel} from "@devexpress/dx-react-scheduler";
+import TableauContainer from "../containers/TableauContainer";
+import Factory from '../factories/componentFactory'
+import Notifier from './Notifier'
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+
 
 let theme = createMuiTheme({
   palette: {
@@ -168,39 +171,49 @@ const styles = createStyles({
 
 export interface PaperbaseProps extends WithStyles<typeof styles> {}
 
-function Paperbase(props: PaperbaseProps) {
+export interface NavigatorContext {
+  component: string;
+  setCurrentComponent: (component: string) => void;
+}
+
+const appointments: Array<AppointmentModel> = [{
+  startDate: '2018-10-31T10:00',
+  endDate: '2018-10-31T11:15',
+  title: 'audience 1',
+  type: 'private',
+}, {
+  startDate: '2018-10-31T07:30',
+  endDate: '2018-10-31T09:00',
+  title: 'audience 2',
+  type: 'work',
+}];
+
+interface ComponentMapper {
+  component: string,
+  element: JSX.Element,
+}
+const componentUndefined: ComponentMapper ={component: 'Undefined', element: <div>Undefined</div>}
+const componentMap: Array<ComponentMapper> =  [
+  {component: 'Calendrier', element: <Calendar appointments={appointments}/>},
+  {component: 'AutoComplete', element: <div>Autocomplte</div>},
+  {component: 'Listing', element: <TableauContainer />},
+  componentUndefined,
+]
+const  Paperbase: React.FC<RouteComponentProps & PaperbaseProps> = (props: PaperbaseProps) => {
   const { classes } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
-
+  const [state, dispatch] = React.useContext<[StateComponentType, Dispatch<ComponentActionType>]>(componentContext);
   return (
     <ThemeProvider theme={theme}>
       <div className={classes.root}>
         <CssBaseline />
         <nav className={classes.drawer}>
-          <Hidden smUp implementation="js">
-            <Navigator
-              PaperProps={{ style: { width: drawerWidth } }}
-              variant="temporary"
-              open={mobileOpen}
-              onClose={handleDrawerToggle}
-            />
-          </Hidden>
-          <Hidden xsDown implementation="css">
             <Navigator PaperProps={{ style: { width: drawerWidth } }} />
-          </Hidden>
         </nav>
         <div className={classes.app}>
-          <Header onDrawerToggle={handleDrawerToggle} />
+          <Header  />
           <main className={classes.main}>
-            <Content />
+            <Factory component={state.component} />
           </main>
-          <footer className={classes.footer}>
-            <Copyright />
-          </footer>
         </div>
       </div>
     </ThemeProvider>

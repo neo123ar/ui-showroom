@@ -11,6 +11,7 @@ import IconButton from '@material-ui/core/IconButton';
 import { createStyles, Theme, withStyles, WithStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import RefreshIcon from '@material-ui/icons/Refresh';
+import {RouteComponentProps} from "@reach/router";
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -38,7 +39,7 @@ const styles = (theme: Theme) =>
 
 export interface ContentProps extends WithStyles<typeof styles> {}
 
-function Content(props: ContentProps) {
+const Content : React.FC<RouteComponentProps & ContentProps>  = (props: ContentProps) => {
   const { classes } = props;
 
   return (

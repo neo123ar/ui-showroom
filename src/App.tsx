@@ -1,25 +1,51 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Header from "./components/Header";
+import {Router} from '@reach/router';
+import Calendar from "./components/Calendar";
+import {AppointmentModel} from "@devexpress/dx-react-scheduler";
+import Tableau from "./components/Tableau";
+import TableauContainer from "./containers/TableauContainer";
+import ShowCase from "./pages/showcase";
+import Content from "./components/Content";
+import Paperbase from "./components/Paperbase";
+import Authentification from "./containers/authentification";
+
+
+const appointments: Array<AppointmentModel> = [{
+    startDate: '2018-10-31T10:00',
+    endDate: '2018-10-31T11:15',
+    title: 'audience 1',
+    type: 'private',
+}, {
+    startDate: '2018-10-31T07:30',
+    endDate: '2018-10-31T09:00',
+    title: 'audience 2',
+    type: 'work',
+}];
+
+const data = [
+    {id: 1, name: "doca1"},
+    {id: 2, name: "doca1", ville:"paris"},
+]
+
+
+const options = {
+    toolbar: false,
+    header:true,
+    paging: false
+}
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+            <Router>
+                <Authentification path="authentication"/>
+                <Calendar path="audiences" appointments={appointments} key="audience"/>
+                <TableauContainer path="affaires"  />
+                <ShowCase path="showcase"/>
+            </Router>
+    </>
   );
 }
 
