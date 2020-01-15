@@ -1,6 +1,9 @@
 {
   "name": "ui-showroom",
   "version": "0.1.0",
+  "engines": {
+    "node": "12.11.1"
+  },
   "private": true,
   "dependencies": {
     "@devexpress/dx-react-core": "^2.3.2",
