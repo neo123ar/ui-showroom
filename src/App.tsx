@@ -36,7 +36,7 @@ const App: React.FC = () => {
   return (
     <>
             <Router>
-                <Authentification path="authentication"/>
+                <Authentification path="/"/>
                 <Calendar path="audiences" appointments={appointments} key="audience"/>
                 <TableauContainer path="affaires"  />
                 <ShowCase path="showcase"/>
